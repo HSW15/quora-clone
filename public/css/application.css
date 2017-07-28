@@ -1,0 +1,10 @@
+#header {
+	text-align: center;
+	color: blue;
+	border-radius: 10px;
+	margin-top: 100;
+	text-transform: uppercase;
+	font-family: 'Helvetica Neue';
+	font-size: 50px;
+	position:relative;
+}
