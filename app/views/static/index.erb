@@ -1,2 +1,46 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+<div id="header">Welcome to Quora</div>
+
+
+<div style="clear:both"></div>
+	<% if logged_in? %>
+		<h1> Hey <%= current_user.full_name %>! My email is <%= current_user.email %> <h1>
+		<form method=post action = /logout>
+			<input type=submit value= "Logout">
+		</form>
+		<form method=get action ="/users/<%=current_user.id%>">
+			<input type=submit value= "Go to your user page">
+		</form>
+
+
+	<% else %>
+		<div id = "login">
+		<h2>Login</h2>
+		<form method=post action=/login>
+    		<input type=text placeholder="Email" name="user[email]"><br></br>
+    		<% if @user == "incorrect"%>
+    			<%= "Incorrect email" %>
+    			<br></br>
+    		<% end %>
+    		<input type=password placeholder="Password" name="user[password]"><br></br>
+    		<% if @bool2 == false%>
+    			<%= "Incorrect password" %>
+    			<br></br>
+    		<% end %>
+    		<input type=submit value="Login">
+		</form>
+
+		</div>
+		<div id ="signup">
+		<h2 id = "signup_header">Sign up for an account!</h2>
+		<form method="post" action="/users">
+			<input type=full_name placeholder="Full name" name="user[full_name]"><br></br>
+    		<input type=text placeholder="Email" name="user[email]"><br></br>
+    		<% if @bool == false %>
+    			<%= @errors %>
+    			<br></br>
+    		<% end %>
+    		<input type=password placeholder="Password" name="user[password]"><br></br>
+    		<input type=submit value="Sign up">
+		</form>
+	<% end %>
+</div>

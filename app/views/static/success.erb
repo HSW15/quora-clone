@@ -1,0 +1,8 @@
+<h1> Hey <%= @user.full_name %>, you successfully signed up <h1>
+<form method=post action = /logout>
+	<input type=submit value= "Logout">
+</form>
+
+<form method=get action ="/users/<%=@user.id%>">
+	<input type=submit value= "Go to your user page">
+</form>

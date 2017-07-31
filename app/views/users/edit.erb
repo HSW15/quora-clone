@@ -1,0 +1,8 @@
+<form method="post" action="/users/<%=@user.id%>">
+	<input name="_method" type="hidden" value="patch">
+	<input type=full_name placeholder="Full name" name="user[full_name]" value="<%=@user.full_name%>"br></br>
+	<input type=text placeholder="Email" name="user[email]" value="<%=@user.email%>"><br></br>
+	
+	<input type=password placeholder="Password" name="user[password]"><br></br>
+	<input type=submit value="Edit this profile">
+</form>

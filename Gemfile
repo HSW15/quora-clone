@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 # Ruby Version
 # ruby "2.2.1"
-
+#adding bcrypt gem for my user authentication(login, logout, signup)
+gem 'bcypt', '~>3.1.7'
 # Adding Sinatra Drivers
 gem 'sinatra'
 gem 'sinatra-contrib'
@@ -35,3 +36,5 @@ group :production do
 	gem 'rails_12factor' # Heroku Gem Supports
 	gem 'puma' # Using puma for
 end
+
+gem 'byebug'
