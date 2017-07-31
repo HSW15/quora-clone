@@ -7,7 +7,7 @@
 		<form method=post action = /logout>
 			<input type=submit value= "Logout">
 		</form>
-		<form method=get action =/users>
+		<form method=get action ="/users/<%=current_user.id%>">
 			<input type=submit value= "Go to your user page">
 		</form>
 
@@ -32,7 +32,7 @@
 		</div>
 		<div id ="signup">
 		<h2 id = "signup_header">Sign up for an account!</h2>
-		<form method="post" action="/signup">
+		<form method="post" action="/users">
 			<input type=full_name placeholder="Full name" name="user[full_name]"><br></br>
     		<input type=text placeholder="Email" name="user[email]"><br></br>
     		<% if @bool == false %>
