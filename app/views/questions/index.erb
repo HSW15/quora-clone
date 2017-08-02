@@ -1,0 +1,92 @@
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+    <% if logged_in? %>
+      <form method=post action = /logout>
+        <input type=submit value= "Logout">
+      </form>
+      <p><form method=get action = "/users/<%=current_user.id%>/questions/new">
+            <input type=submit value= "Make a new post">
+          </form>
+      </p>
+      <p><form method=get action = "/">
+            <input type=submit value= "Return to home page">
+          </form>
+      </p>
+    <% else %>
+      <a href='/'>Return to home page<a><hr>
+    <% end %>
+    </div>
+
+    <div class="col-sm-8 text-left"> 
+      <h1>Welcome</h1>
+      <p>
+
+          <% list.each do |list| %>
+          <div class="well">
+            <span id="title"><a href="/questions/<%=list.id%>"><%= list.question_title %></a></span>
+            <hr>
+            <span id="name"><%= list.user.full_name %>:</span>
+            <span id="description"><%= list.question_description %></span>
+            <hr>
+            <% answer.each do |answer| %>
+              <% if answer.question_id == list.id %>
+                <span id="user"><%=answer.user.full_name %></span>
+                  <% if logged_in? && current_user[:id] == answer.user.id %>
+                    <button class="button" onclick="edit()">Edit</button>
+                    <form id='prompt_edit' method = "post" action="/questions/<%=list.id%>/answers/<%=answer.id%>">
+                      <input type = "hidden" name = "_method" value="patch">
+                      <input id = "myField" type = "hidden" name = answer[answer_description]>
+                    </form>
+
+                    <form method="post" action="/questions/<%=list.id%>/answers/<%=answer.id%>">
+                      <input name="_method" type="hidden" value="delete">
+                      <input class="button" type="submit" value="Delete permanently">
+                    </form>
+
+                  <% end %>
+                <span id="chat"><div class="well" style="background-color:white"><%= answer.answer_description %></div></span>
+                <hr>
+              <% end %>
+            <% end %>
+            
+            <% if logged_in? && current_user[:id] == list.user.id %>
+              <a href="/questions/<%=list.id %>/edit">Edit this post</a>
+              <form method="post" action="/questions/<%=list.id%>">
+                <input name="_method" type="hidden" value="delete">
+                <input type=submit value="Delete permanently">
+              </form>
+            <% end %>
+            <% if logged_in? %>
+            <form method="get" action="/questions/<%=list.id%>/answers/new">
+              <input type=submit value="Answer this">
+            </form>
+            
+            <% end %>
+
+          </div>
+          <%end%>
+      </p>
+      <hr>
+      </div>
+      
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+        <p>ADS</p>
+      </div>
+      <div class="well">
+        <p>ADS</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function edit(){
+  var answer = prompt("Edit your answer");
+  if (answer !=null){
+    document.getElementById("myField").value = answer;
+    $("#prompt_edit").submit()
+  }
+}
+</script>

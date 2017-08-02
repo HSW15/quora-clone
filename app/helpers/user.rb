@@ -11,4 +11,12 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  def list
+    @list = Question.all.order("updated_at DESC")
+    
+  end
+  def answer
+    @answer = Answer.all
+  end
 end
