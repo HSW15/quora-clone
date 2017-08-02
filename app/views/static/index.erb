@@ -1,7 +1,22 @@
-<div id="header">Welcome to Quora</div>
 
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"><img src="quoralogo.jpeg" id="img1"></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><p>Welcome to Quora</p></li>
+    </ul>
+  </div>
+</nav>
 
-<div style="clear:both"></div>
+<div id="header">
+    <a href="/questions">
+    See Top stories
+    </a>
+</div>
+	
+
 	<% if logged_in? %>
 		<h1> Hey <%= current_user.full_name %>! My email is <%= current_user.email %> <h1>
 		<form method=post action = /logout>
@@ -13,7 +28,10 @@
 
 
 	<% else %>
-		<div id = "login">
+    <div class="container-fluid text-center"> 
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+		
 		<h2>Login</h2>
 		<form method=post action=/login>
     		<input type=text placeholder="Email" name="user[email]"><br></br>
@@ -28,19 +46,24 @@
     		<% end %>
     		<input type=submit value="Login">
 		</form>
-
-		</div>
+        </div>
+        <div class="col-sm-8 text-left"></div>
+        <div class="col-sm-2 sidenav">
 		<div id ="signup">
 		<h2 id = "signup_header">Sign up for an account!</h2>
 		<form method="post" action="/users">
-			<input type=full_name placeholder="Full name" name="user[full_name]"><br></br>
-    		<input type=text placeholder="Email" name="user[email]"><br></br>
+			<input type=text placeholder="Full name" name="user[full_name]">
+    		<input type=text placeholder="Email" name="user[email]">
     		<% if @bool == false %>
     			<%= @errors %>
     			<br></br>
     		<% end %>
-    		<input type=password placeholder="Password" name="user[password]"><br></br>
+    		<input type=password placeholder="Password" name="user[password]"><
     		<input type=submit value="Sign up">
 		</form>
+        </div>
+        </div>
+        </div>
+        </div>
+        
 	<% end %>
-</div>

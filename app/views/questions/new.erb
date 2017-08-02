@@ -1,0 +1,12 @@
+ <form method=post action="/users/<%=@user.id%>/questions">
+  <div class="container">
+      <label><b>Question Title</b></label>
+      <input type="text" placeholder="Enter Question Title" name="question[question_title]" required>
+      <label><b>Question Description</b></label>
+      <input type="text" placeholder="Enter Question Description" name="question[question_description]" required>
+      <div class="clearfix">
+        <button type="button"  class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Post!</button>
+      </div>
+    </div>
+  </form> 

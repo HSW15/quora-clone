@@ -1,0 +1,27 @@
+<div class="well">
+<p>
+	<span id="title"><%=@question.question_title%></span><hr>
+	<span id="name"><%= @question.user.full_name %>:</span>
+	<span id="description"><%= @question.question_description %></span><hr>
+	<% answer.each do |answer| %>
+        <% if answer.question_id == @question.id %>
+            <span id="user"><%=answer.user.full_name %></span>
+            <span id="chat"><div class="well"><%= answer.answer_description %></div></span>
+            <hr>
+        <% end %>
+    <% end %>
+
+</p>
+</div>
+<% if logged_in? && current_user[:id] == @question.user.id %>
+    <a href="/questions/<%=@question.id %>/edit">Edit this post</a>
+    <form method="post" action="/questions/<%=@question.id%>">
+        <input name="_method" type="hidden" value="delete">
+        <input type=submit value="Delete permanently">
+    </form>
+    <form method="get" action="/questions/<%=@question.id%>/answers/new">
+        <input type=submit value="Answer this">
+    </form>
+<% end %>
+
+<a href="/questions">Go Back To Forums</a>

@@ -1,0 +1,20 @@
+<div class="well">
+<form method="post" action="/questions/<%=@question[:id]%>">
+
+	<input name="_method" type="hidden" value="patch">
+	<span id="title">Current Question Title: <%=@question.question_title%></span>
+	<p><input type=string placeholder="New Question title" name="question[question_title]" value="<%=@question.question_title%>"> Clear field to enter new question title</p>
+	
+	<span id="title">Current Question Description: <%=@question.question_description%></span>
+	<p><input type=string placeholder="New Question Description" name="question[question_description]" value="<%=@question.question_description%>"> Clear field to enter new question title</p>
+	
+	<input type=password placeholder="Password" name="user[password]">
+	<% if @bool == "incorrect"%>
+    	<%= "Incorrect email" %><br></br>
+    <% end %>
+	<input type=submit value="Edit this profile">
+</form>
+
+</div>
+
+<a href="/questions"> Go Back To Forums</a>

@@ -1,6 +1,15 @@
-<h1> HEY THERE <%=current_user.full_name %><h1>
 
-<form method=post action = "/users/<%=current_user.id%>/edit">
+<div id="header_main">
+	<ul id="header">
+      <li><p><a href="/questions">Trending Questions</a></p></li>
+  	</ul>
+</div>
+
+<div id="username">
+<h1><p> <%=current_user.full_name %>, see what you missed</p><h1>
+</div>
+
+<form method=get action = "/users/<%=current_user.id%>/edit">
 	<input type=submit value="Edit profile">
 </form>
 
@@ -13,3 +22,8 @@
 <input type="hidden" name="_method" value="delete">
 	<input type=submit value= "Delete acc permanently">
 </form>
+
+<form method=get action = "/users/<%=current_user.id%>/questions/new">
+	<input type=submit value= "Make a new post">
+</form>
+

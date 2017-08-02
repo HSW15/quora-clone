@@ -26,6 +26,7 @@ end
 
 #Update - edit do
 get '/users/:id/edit' do
+	byebug
 	@user = User.find(params[:id])
 	erb :"users/edit"
 end
@@ -45,5 +46,4 @@ delete '/users/:id' do
 	@user = User.find(params[:id])
 	@user.destroy
 	redirect "/"
-
 end

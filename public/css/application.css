@@ -1,14 +1,16 @@
 #header {
 	text-align: center;
 	color: navy;
-	border-radius: 10px;
-	margin-top: 100;
 	text-transform: uppercase;
 	font-family: 'Helvetica Neue';
 	font-size: 50px;
 	position:relative;
 	padding-right: 50%;
 	padding-left: 10%;
+}
+#title{
+	 font-family: "Calisto MT";
+	 font-size: 30px;
 }
 
 h2 {
@@ -19,4 +21,140 @@ h2 {
 	float: right;
 	padding-right: 10%;
 
+}
+
+#header_main {
+	position:fixed;
+	width:100%;
+	height:100px;
+	top:0;
+	left:0;
+	color:white;
+	z-index:7;
+	font-family:verdana;
+	-webkit-box-shadow: 0 3px 8px rgba(0,0,0,.25);
+}
+#header{
+	/*position:fixed;*/
+	width:100%;
+	background:#142170;
+	top:0;
+	left:0;
+	color:white;
+	font-family:'Catull BQ Regular';
+	clear:left;
+}
+
+#img1{
+	height:100px;
+	width:100px;
+	position:left;
+}
+.navbar-header{
+	height:100px;
+}
+.active{
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-family: 'Helvetica Neue';
+	font-size: 50px;
+	position:relative;
+	font-size: 60px;
+	margin-top:25px;
+}
+.sidenav {
+      padding-top: 20px;
+      background-color: #f1f1f1;
+      height: 100%;
+}
+
+#username{
+	margin-top:100px;
+	
+
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,.signupbtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+        width: 100%;
+    }
+}
+
+#name{
+	font-family: "Bernard MT Condensed";
+	font-size: 22px;
+	color: blue;
+}
+#description
+{
+	font-family: "courier";
+	font-size: 20px;
+}
+
+
+#user{
+	font-family: "Bernard MT Condensed";
+	font-size: 15px;
+	color: navy;
+}
+
+.button {
+    background-color: white;
+   	
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: auto;
+	border: 2px solid #4CAF50;
 }
