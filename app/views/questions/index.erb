@@ -1,3 +1,4 @@
+
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
@@ -29,24 +30,82 @@
             <span id="name"><%= list.user.full_name %>:</span>
             <span id="description"><%= list.question_description %></span>
             <hr>
+            
             <% answer.each do |answer| %>
               <% if answer.question_id == list.id %>
-                <span id="user"><%=answer.user.full_name %></span>
-                  <% if logged_in? && current_user[:id] == answer.user.id %>
+                <% ans = Answer.find(answer[:id]) %>
+                <% if logged_in? %>
+                  
+                  <% ans_vote = ans.answers_votes.find_by(user_id: current_user.id) %>
+                  
+                  <% if current_user[:id] == answer.user.id %>
+                    
                     <button class="button" onclick="edit()">Edit</button>
                     <form id='prompt_edit' method = "post" action="/questions/<%=list.id%>/answers/<%=answer.id%>">
                       <input type = "hidden" name = "_method" value="patch">
                       <input id = "myField" type = "hidden" name = answer[answer_description]>
                     </form>
-
                     <form method="post" action="/questions/<%=list.id%>/answers/<%=answer.id%>">
                       <input name="_method" type="hidden" value="delete">
                       <input class="button" type="submit" value="Delete permanently">
                     </form>
 
                   <% end %>
-                <span id="chat"><div class="well" style="background-color:white"><%= answer.answer_description %></div></span>
-                <hr>
+                <% end %> 
+                  <% case %>
+                  <% when !logged_in? %>
+                      
+                        <div class="well" id="annoying" style="background-color:white">
+                          <span id="user">
+                            <%=answer.user.full_name%> : <%= answer.answer_description %>
+                          </span>
+                        </div>
+                  
+                  <% when logged_in? && (ans_vote==nil) %>
+                      <div class="arrow_up2">
+                      <a href="/answers/<%=answer.id%>/upvote"><div class="arrow-up"></div></a>
+                      </div>
+                        <div class="well" id="annoying" style="background-color:white">
+                          <span id="user">
+                            <%=answer.user.full_name%> : <%= answer.answer_description %>
+                          </span>
+                          <em>No. of <b>upvotes</b>: <%=ans.upvote_count %>, </em>
+                          <em>No. of <b>downvotes</b>: <%=ans.downvote_count %></em>
+                        </div>
+                      <a href="/answers/<%=answer.id%>/downvote" ><div class="arrow-down"></div></a>
+
+                  <% when logged_in? && (ans_vote!=nil) %>
+
+                    <% if ans_vote.vote == true %>
+                      <p style="display:inline-block;">
+                      You have upvoted already
+                      <a href="/answers/<%=answer.id%>/upvote" disabled="disabled"><div id="button_disabled_up"></div></a>
+                      </p>
+                    <% else %>
+
+                      <a href="/answers/<%=answer.id%>/upvote" class="test"><div class="arrow-up"></div></a>
+
+                    <% end %>
+                        <div class="well" id="annoying" style="background-color:white">
+                          <span id="user">
+                            <%=answer.user.full_name%> : <%= answer.answer_description %>
+                          </span>
+                          <hr>
+                          
+                          <em>No. of <b>upvotes</b>: <span id='answer-<%= answer.id %>-upvote-count'><%=ans.upvote_count %></span>, </em>
+                          <em>No. of <b>downvotes</b>: <span id='answer-<%= answer.id %>-downvote-count'><%=ans.downvote_count %></span></em>
+                          
+                        </div>
+                    <% if ans_vote.vote == false %>
+                      <p style="display:inline-block;">
+                      <a href="/answers/<%=answer.id%>/downvote" disabled="disabled"><div id="button_disabled_down"></div></a>
+                      You have downvoted already
+                      </p>
+                    <% else %>
+                      <a href="/answers/<%=answer.id%>/downvote" ><div class="arrow-down"></div></a>
+                    <% end %>
+                  <% end %>
+
               <% end %>
             <% end %>
             
@@ -89,4 +148,11 @@ function edit(){
     $("#prompt_edit").submit()
   }
 }
+
 </script>
+<style type="text/css">
+    a[disabled="disabled"] {
+        pointer-events: none;
+
+    }
+</style>
