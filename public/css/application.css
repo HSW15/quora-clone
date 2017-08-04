@@ -158,3 +158,56 @@ button {
     width: auto;
 	border: 2px solid #4CAF50;
 }
+
+.arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid red;
+}
+
+#arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid red;
+}
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  
+  border-top: 25px solid red;
+}
+#arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  
+  border-top: 25px solid red;
+}
+
+#annoying{
+	margin:0;
+
+}
+
+#button_disabled_up{
+	width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 25px solid grey;
+}
+
+#button_disabled_down{
+	width: 0; 
+  height: 0; 
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid grey;
+}
