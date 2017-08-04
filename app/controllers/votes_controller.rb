@@ -42,5 +42,6 @@ get '/answers/:answer_id/downvote' do
 	a = []
 	a << @answer
 	a << @answer.upvote_count
+	a << @answer.downvote_count
 	return a.to_json
 end
